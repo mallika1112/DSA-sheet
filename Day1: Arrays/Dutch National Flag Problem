@@ -1,0 +1,52 @@
+Solution 1: By sorting.
+
+Time Complexity: O(nlogn)
+Space Complexity: O(1)
+
+
+Solution 2: By counting 0, 1 and 2 and 
+
+Time Complexity: O(N)+O(N)
+Space Complexity: O(1)
+
+
+Solution 3: Dutch National Algorithm
+
+Time Complexity: O(N)
+Space Complexity: O(1)
+
+
+Solution of Dutch National Flag Algorithm:
+
+#include <iostream>
+#include<vector>
+using namespace std;
+
+void solve(vector<int> arr){
+  int lo=0, hi=arr.size()-1, mid=0, temp=0;
+  for(int i=0;i<arr.size();i++){
+    if(arr[mid]<arr[lo]){
+      temp=arr[lo];
+      arr[lo]=arr[mid];
+      arr[mid]=temp;
+      lo++; mid++;
+    }
+    else if(arr[hi]<arr[mid]){
+      temp=arr[hi];
+      arr[hi]=arr[mid];
+      arr[mid]=temp;
+      hi--;
+    }
+    else
+      mid++;
+  }
+  for(int i=0;i<arr.size();i++)
+    cout<<arr[i]<<" ";
+}
+
+
+int main() {
+  vector <int> arr{2,0,2,1,1,0};
+  solve(arr);
+  return 0;
+}
